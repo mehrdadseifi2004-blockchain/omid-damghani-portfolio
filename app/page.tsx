@@ -6,7 +6,7 @@ const works = [
     title: "Jangal Abr",
     category: "Nature",
     year: "2025",
-    image: "/images/Jangal Abr/_MG_5664.jpg",
+    image: "/images/Jangal Abr/_MG_5664.webp",
     className: "work-large",
   },
   {
@@ -14,7 +14,7 @@ const works = [
     title: "Kordestan",
     category: "Travel",
     year: "2025",
-    image: "/images/Kordestan/_MG_8421 (2).jpg",
+    image: "/images/Kordestan/_MG_8421 (2).webp",
     className: "work-tall",
   },
   {
@@ -22,7 +22,7 @@ const works = [
     title: "Ashoora Shahroud",
     category: "Documentary",
     year: "2025",
-    image: "/images/Ashoora Shahroud/_MG_5923.jpg",
+    image: "/images/Ashoora Shahroud/_MG_5923.webp",
     className: "work-wide",
   },
   {
@@ -30,7 +30,7 @@ const works = [
     title: "Bastam",
     category: "Landscape",
     year: "2025",
-    image: "/images/Bastam/_MG_4308.jpg",
+    image: "/images/Bastam/_MG_4308.webp",
     className: "work-small",
   },
   {
@@ -38,7 +38,7 @@ const works = [
     title: "Mankan Kordestan",
     category: "Nature",
     year: "2025",
-    image: "/images/Mankan Kordestan/_MG_3131 (1).jpg",
+    image: "/images/Mankan Kordestan/_MG_3131 (1).webp",
     className: "work-small",
   },
 ];
@@ -103,7 +103,7 @@ export default function Home() {
         <div className="hero-media">
           <div className="hero-glow" />
           <img
-  src="/images/Kordestan/Cover.jpg"
+  src="/images/Kordestan/Cover.webp"
   alt="Omid Damghani photography"
 />
           <div className="image-grain" />
