@@ -10,7 +10,10 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
@@ -18,6 +21,7 @@ body {
   color: var(--white);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -132,7 +136,7 @@ h1 {
   position: relative;
   min-height: 650px;
   align-self: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .hero-media img {
@@ -331,9 +335,50 @@ footer {
 .socials a:hover { color: var(--teal); }
 
 @media (max-width: 900px) {
-  .nav { grid-template-columns: 52px 1fr auto; padding: 0 5vw; }
-  .nav-links { display: none; }
-  .brand-name { font-size: 9px; }
+  .nav {
+    height: 88px;
+    padding: 0 3vw;
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    font-size: 26px;
+  }
+
+  .brand-name {
+    font-size: 8px;
+    letter-spacing: .20em;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 18px;
+    white-space: nowrap;
+  }
+
+  .nav-links a {
+    font-size: 8px;
+    letter-spacing: .16em;
+  }
+
+  .nav-links a.active::before {
+    width: 26px;
+    height: 2px;
+    top: -22px;
+  }
+
+  .language {
+    font-size: 8px;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
   .hero { grid-template-columns: 1fr; padding: 20px 7vw 80px; }
   .hero-copy { padding-top: 10px; }
   .hero-media { min-height: 540px; }
@@ -348,10 +393,68 @@ footer {
 }
 
 @media (max-width: 560px) {
-  .nav { height: 72px; grid-template-columns: 48px 1fr auto; gap: 12px; }
-  .brand-mark { width: 44px; height: 44px; font-size: 25px; }
+  .nav {
+    height: 72px;
+    padding: 0 12px;
+    grid-template-columns: 38px minmax(0, 1fr) auto auto;
+    gap: 7px;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-media {
+    min-height: 430px;
+    overflow: hidden;
+  }
+
+  .hero-media img {
+    height: 62vh;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .brand-mark span:last-child {
+    margin-left: -9px;
+    margin-top: 13px;
+  }
+
+  .brand-name {
+    font-size: 6.5px;
+    letter-spacing: .15em;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 9px;
+    white-space: nowrap;
+  }
+
+  .nav-links a {
+    font-size: 6.5px;
+    letter-spacing: .12em;
+  }
+
+  .nav-links a.active::before {
+    width: 20px;
+    height: 1px;
+    top: -17px;
+  }
+
+  .language {
+    font-size: 6.5px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
   .hero { min-height: auto; }
-  h1 { font-size: 20vw; }
+  h1 { font-size: 18vw; }
   .hero-media { min-height: 430px; }
   .hero-media img { height: 62vh; }
   .selected { padding: 60px 5vw; }
