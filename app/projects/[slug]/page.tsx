@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+
 import LightboxGallery from "../../../components/LightboxGallery";
 
 const projects = {
@@ -88,27 +89,23 @@ const projects = {
       "20241121_003109.jpg",
     ],
   },
-
 };
 
-
-export default function ProjectGallery({
+export default async function ProjectGallery({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
 
-  const project = projects[params.slug as keyof typeof projects];
-
+  const project = projects[slug as keyof typeof projects];
 
   if (!project) {
     notFound();
   }
 
-
   return (
     <main className="selected">
-
       <div className="section-heading">
         <div>
           <span className="eyebrow">
@@ -122,11 +119,10 @@ export default function ProjectGallery({
       </div>
 
       <LightboxGallery
-  images={project.images}
-  folder={project.folder}
-  title={project.title}
-/>
-
+        images={project.images}
+        folder={project.folder}
+        title={project.title}
+      />
     </main>
   );
 }
