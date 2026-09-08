@@ -1,4 +1,6 @@
 import { ArrowDown, ArrowRight, Instagram, Mail } from "lucide-react";
+import LightboxGallery from "../components/LightboxGallery";
+import LightboxImage from "../components/LightboxImage";
 
 const works = [
   {
@@ -102,7 +104,7 @@ export default function Home() {
 
         <div className="hero-media">
           <div className="hero-glow" />
-          <img
+          <LightboxImage
   src="/images/Kordestan/Cover.webp"
   alt="Omid Damghani photography"
 />
@@ -142,7 +144,10 @@ export default function Home() {
           <div className="gallery">
             {works.map((work) => (
               <article className={`work ${work.className}`} id={work.number} key={work.number}>
-                <img src={work.image} alt={work.title} loading="lazy" />
+                <LightboxImage
+  src={work.image}
+  alt={work.title}
+/>
                 <div className="work-overlay">
                   <div>
                     <span>{work.number} / {work.category}</span>

@@ -7,6 +7,18 @@ export default function Footer() {
         © 2026 OMID DAMGHANI
       </span>
 
+      <div className="footer-credit">
+  <span>Design &amp; Development by:</span>
+
+  <a
+    href="https://mehrdadseif.ir"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    MehrdadSeif.ir
+  </a>
+</div>
+
       <div className="socials">
         <a href="#" aria-label="Instagram">
           <Instagram size={17} strokeWidth={1.4} />
