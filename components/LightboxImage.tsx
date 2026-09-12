@@ -24,6 +24,35 @@ export default function LightboxImage({
   const total = gallery.length;
   const currentImage = gallery[currentIndex] ?? src;
 
+  /*
+   * Preload previous and next images
+   * so navigation feels instant.
+   */
+  useEffect(() => {
+    if (!open || total <= 1) return;
+
+    const previousIndex =
+      currentIndex === 0
+        ? total - 1
+        : currentIndex - 1;
+
+    const nextIndex =
+      currentIndex === total - 1
+        ? 0
+        : currentIndex + 1;
+
+    const previousImage = new Image();
+    previousImage.src = gallery[previousIndex];
+
+    const nextImage = new Image();
+    nextImage.src = gallery[nextIndex];
+
+    return () => {
+      previousImage.src = "";
+      nextImage.src = "";
+    };
+  }, [open, currentIndex, gallery, total]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -60,11 +89,14 @@ export default function LightboxImage({
 
   const handleOpen = () => {
     const index = gallery.indexOf(src);
+
     setCurrentIndex(index >= 0 ? index : 0);
     setOpen(true);
   };
 
-  const handlePrevious = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handlePrevious = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.stopPropagation();
 
     setCurrentIndex((index) =>
@@ -72,7 +104,9 @@ export default function LightboxImage({
     );
   };
 
-  const handleNext = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleNext = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.stopPropagation();
 
     setCurrentIndex((index) =>
@@ -98,7 +132,9 @@ export default function LightboxImage({
           >
             <div
               className="lightbox-content"
-              onClick={(event) => event.stopPropagation()}
+              onClick={(event) =>
+                event.stopPropagation()
+              }
             >
               {total > 1 && (
                 <button
@@ -106,7 +142,11 @@ export default function LightboxImage({
                   onClick={handlePrevious}
                   aria-label="Previous image"
                 >
-                  <ArrowLeft size={20} strokeWidth={1.2} />
+                  <ArrowLeft
+                    size={20}
+                    strokeWidth={1.2}
+                  />
+
                   <span>PREV</span>
                 </button>
               )}
@@ -124,7 +164,11 @@ export default function LightboxImage({
                   aria-label="Next image"
                 >
                   <span>NEXT</span>
-                  <ArrowRight size={20} strokeWidth={1.2} />
+
+                  <ArrowRight
+                    size={20}
+                    strokeWidth={1.2}
+                  />
                 </button>
               )}
             </div>
