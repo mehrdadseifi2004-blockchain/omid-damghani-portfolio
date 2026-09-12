@@ -411,6 +411,8 @@ footer {
 
   .hero-media img {
     height: 62vh;
+    object-fit: contain;
+    object-position: center;
   }
 
   .brand-mark {
