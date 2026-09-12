@@ -2,6 +2,69 @@ import { ArrowDown, ArrowRight, Instagram, Mail } from "lucide-react";
 import LightboxGallery from "../components/LightboxGallery";
 import LightboxImage from "../components/LightboxImage";
 
+const albums = {
+  jangalAbr: [
+    "/images/Jangal Abr/_MG_5664.webp",
+    "/images/Jangal Abr/_MG_5667.webp",
+    "/images/Jangal Abr/_MG_5671.webp",
+    "/images/Jangal Abr/_MG_5678.webp",
+    "/images/Jangal Abr/_MG_5686.webp",
+    "/images/Jangal Abr/_MG_5717.webp",
+    "/images/Jangal Abr/_MG_5720.webp",
+    "/images/Jangal Abr/_MG_5721.webp",
+    "/images/Jangal Abr/_MG_5794.webp",
+  ],
+
+  kordestan: [
+    "/images/Kordestan/20231013_161650.webp",
+    "/images/Kordestan/20241026_144534.webp",
+    "/images/Kordestan/20241031_164313(0) (1).webp",
+    "/images/Kordestan/20250402_151619(0) (2).webp",
+    "/images/Kordestan/20250502_131101.webp",
+    "/images/Kordestan/Cover.webp",
+    "/images/Kordestan/IMG_8684.webp",
+    "/images/Kordestan/_MG_3142 (1).webp",
+    "/images/Kordestan/_MG_5021.webp",
+    "/images/Kordestan/_MG_5022 (1).webp",
+    "/images/Kordestan/_MG_5024.webp",
+    "/images/Kordestan/_MG_5046 (2).webp",
+    "/images/Kordestan/_MG_5046 (3).webp",
+    "/images/Kordestan/_MG_5134 (1).webp",
+    "/images/Kordestan/_MG_6247.webp",
+    "/images/Kordestan/_MG_8421 (2).webp",
+    "/images/Kordestan/_MG_8609.webp",
+    "/images/Kordestan/_MG_8615.webp",
+    "/images/Kordestan/_MG_8624.webp",
+    "/images/Kordestan/_MG_8701.webp",
+    "/images/Kordestan/_MG_8850.webp",
+    "/images/Kordestan/_MG_8920.webp",
+    "/images/Kordestan/_MG_9087 (1).webp",
+  ],
+
+  ashoora: [
+    "/images/Ashoora Shahroud/_MG_5923.webp",
+    "/images/Ashoora Shahroud/_MG_5940 (1).webp",
+    "/images/Ashoora Shahroud/_MG_5948.webp",
+    "/images/Ashoora Shahroud/_MG_5984.webp",
+    "/images/Ashoora Shahroud/_MG_5986 (1).webp",
+    "/images/Ashoora Shahroud/_MG_5988.webp",
+    "/images/Ashoora Shahroud/_MG_6158.webp",
+    "/images/Ashoora Shahroud/_MG_6174.webp",
+  ],
+
+  bastam: ["/images/Bastam/_MG_4308.webp", "/images/Bastam/_MG_4337.webp"],
+
+  mankanKordestan: [
+    "/images/Mankan Kordestan/Cover2.webp",
+    "/images/Mankan Kordestan/_MG_3131 (1).webp",
+    "/images/Mankan Kordestan/_MG_3141 (1).webp",
+    "/images/Mankan Kordestan/_MG_3266.webp",
+    "/images/Mankan Kordestan/_MG_3277 (1).webp",
+    "/images/Mankan Kordestan/_MG_7747 (2).webp",
+    "/images/Mankan Kordestan/_MG_7751.webp",
+  ],
+};
+
 const works = [
   {
     number: "01",
@@ -9,6 +72,7 @@ const works = [
     category: "Nature",
     year: "2025",
     image: "/images/Jangal Abr/_MG_5664.webp",
+    gallery: albums.jangalAbr,
     className: "work-large",
   },
   {
@@ -17,6 +81,7 @@ const works = [
     category: "Travel",
     year: "2025",
     image: "/images/Kordestan/_MG_8421 (2).webp",
+    gallery: albums.kordestan,
     className: "work-tall",
   },
   {
@@ -25,6 +90,7 @@ const works = [
     category: "Documentary",
     year: "2025",
     image: "/images/Ashoora Shahroud/_MG_5923.webp",
+    gallery: albums.ashoora,
     className: "work-wide",
   },
   {
@@ -33,6 +99,7 @@ const works = [
     category: "Landscape",
     year: "2025",
     image: "/images/Bastam/_MG_4308.webp",
+    gallery: albums.bastam,
     className: "work-small",
   },
   {
@@ -41,10 +108,10 @@ const works = [
     category: "Nature",
     year: "2025",
     image: "/images/Mankan Kordestan/_MG_3131 (1).webp",
+    gallery: albums.mankanKordestan,
     className: "work-small",
   },
 ];
-
 export default function Home() {
   return (
     <main>
@@ -105,9 +172,10 @@ export default function Home() {
         <div className="hero-media">
           <div className="hero-glow" />
           <LightboxImage
-  src="/images/Kordestan/Cover.webp"
-  alt="Omid Damghani photography"
-/>
+            src="/images/Kordestan/Cover.webp"
+            alt="Omid Damghani photography"
+            gallery={albums.kordestan}
+          />
           <div className="image-grain" />
         </div>
 
@@ -135,7 +203,11 @@ export default function Home() {
         <div className="works-grid">
           <div className="work-index">
             {works.map((work, i) => (
-              <a href={`#${work.number}`} className={i === 0 ? "current" : ""} key={work.number}>
+              <a
+                href={`#${work.number}`}
+                className={i === 0 ? "current" : ""}
+                key={work.number}
+              >
                 {work.number}
               </a>
             ))}
@@ -143,16 +215,26 @@ export default function Home() {
 
           <div className="gallery">
             {works.map((work) => (
-              <article className={`work ${work.className}`} id={work.number} key={work.number}>
+              <article
+                className={`work ${work.className}`}
+                id={work.number}
+                key={work.number}
+              >
                 <LightboxImage
-  src={work.image}
-  alt={work.title}
-/>
+                  src={work.image}
+                  alt={work.title}
+                  gallery={work.gallery}
+                />
+
                 <div className="work-overlay">
                   <div>
-                    <span>{work.number} / {work.category}</span>
+                    <span>
+                      {work.number} / {work.category}
+                    </span>
+
                     <h3>{work.title}</h3>
                   </div>
+
                   <span>{work.year}</span>
                 </div>
               </article>
@@ -172,7 +254,11 @@ export default function Home() {
       <section className="contact" id="contact">
         <div>
           <span className="eyebrow">LET&apos;S CREATE SOMETHING</span>
-          <h2>HAVE A STORY<br />IN MIND?</h2>
+          <h2>
+            HAVE A STORY
+            <br />
+            IN MIND?
+          </h2>
         </div>
         <a href="mailto:hello@omiddamghani.ir" className="contact-link">
           GET IN TOUCH <Mail size={20} strokeWidth={1.4} />

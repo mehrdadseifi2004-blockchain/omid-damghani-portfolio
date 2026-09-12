@@ -23,12 +23,29 @@ const projects = {
     title: "KORDESTAN",
     folder: "Kordestan",
     images: [
+      "20231013_161650.webp",
+      "20241026_144534.webp",
+      "20241031_164313(0) (1).webp",
+      "20250402_151619(0) (2).webp",
+      "20250502_131101.webp",
       "Cover.webp",
+      "IMG_8684.webp",
+      "_MG_3142 (1).webp",
+      "_MG_5021.webp",
+      "_MG_5022 (1).webp",
+      "_MG_5024.webp",
+      "_MG_5046 (2).webp",
+      "_MG_5046 (3).webp",
+      "_MG_5134 (1).webp",
+      "_MG_6247.webp",
       "_MG_8421 (2).webp",
       "_MG_8609.webp",
       "_MG_8615.webp",
       "_MG_8624.webp",
       "_MG_8701.webp",
+      "_MG_8850.webp",
+      "_MG_8920.webp",
+      "_MG_9087 (1).webp",
     ],
   },
 
@@ -98,7 +115,8 @@ export default async function ProjectGallery({
 }) {
   const { slug } = await params;
 
-  const project = projects[slug as keyof typeof projects];
+  const project =
+    projects[slug as keyof typeof projects];
 
   if (!project) {
     notFound();
@@ -112,9 +130,7 @@ export default async function ProjectGallery({
             PROJECT GALLERY
           </span>
 
-          <h2>
-            {project.title}
-          </h2>
+          <h2>{project.title}</h2>
         </div>
       </div>
 
